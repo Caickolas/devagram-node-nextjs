@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { RespostaPadraoMsg } from '../../types/RespostaPadraoMsg';
 import type { CadastroRequisicao } from '../../types/CadastroRequisicao';
-import { UsuarioModel} from '../../models/Usuariomodel'
+import {UsuarioModel} from '../../models/UsuarioModel'
 
 const endpointCadastro =
     async (req: NextApiRequest, res: NextApiResponse<RespostaPadraoMsg> ) => {
@@ -27,7 +27,7 @@ const endpointCadastro =
             }
 
             // salvar banco de dados
-            await UsuarioModel.create(usuario)
+            await UsuarioModel.create(usuario);
             return res.status(200).json({msg: 'Usuario feito com sucesso!'});
         }
 
