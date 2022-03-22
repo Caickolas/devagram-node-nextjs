@@ -31,7 +31,6 @@ const endpointLogin = async (
             });
         }
     }
-
     return res.status(405).json({erro: 'Metodo informado não é valido'});
 };
 
