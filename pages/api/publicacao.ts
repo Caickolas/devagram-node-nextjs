@@ -41,6 +41,10 @@ const handler = nc()
             };
 
             await PublicacaoModel.create(publicacao);
+            usuario.publicacoes++
+            await await UsuarioModel.findByIdAndUpdate({ _id: usuario._id }, usuario);
+
+            
             return res.status(200).json({ msg: 'Publicacao feita com sucesso!' })     
         }catch(e){
             console.log(e);
