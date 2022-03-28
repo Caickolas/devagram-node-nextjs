@@ -4,7 +4,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken';
 import { decode } from "punycode";
 
 export const validarTokenJWT = (handler : NextApiHandler) =>
-    (req : NextApiRequest, res : NextApiResponse) => {
+    (req : NextApiRequest, res : NextApiResponse<RespostaPadraoMsg | any>) => {
 
         try{
 
@@ -42,7 +42,7 @@ export const validarTokenJWT = (handler : NextApiHandler) =>
 
             req.query.userId = decoded._id;
         }
-    }catch(e : Error){
+    }catch(e){
         console.log(e);
         return res.status(401).json({ erro: 'Nao foi possivel validar o token de acesso' });
     
