@@ -22,12 +22,12 @@ const handler = nc()
             if(nome && nome.length > 2){
                 usuario.nome = nome
             };
-            const {file} = req;
-            if(file && file.originalname){
+            const { file } = req;
+            if (file && file.originalname) {
                 const image = await uploadImagemCosmic(req);
-                if(image && image.media && image.media.url){
-                    usuario.avatar = image.media.url
-                }
+                if (image && image.media && image.media.url) {
+                    usuario.avatar = image.media.url;
+                } 
             };
 
             await UsuarioModel.findByIdAndUpdate({_id : usuario._id}, usuario);
@@ -56,7 +56,7 @@ const handler = nc()
         } catch (e) {
             console.log(e);
         }
-        return res.status(400).json({ erro: 'Nao foi possivel obter dados do usuario' + e})
+        return res.status(400).json({ erro: 'Nao foi possivel obter dados do usuario'})
     });
 
 export const config = {
